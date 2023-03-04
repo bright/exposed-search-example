@@ -16,7 +16,7 @@ import java.time.format.DateTimeParseException
 
 class ExposedRSQLVisitor(
     private val searchSpecification: SearchSpecification
-): NoArgRSQLVisitorAdapter<Op<Boolean>>() {
+) : NoArgRSQLVisitorAdapter<Op<Boolean>>() {
 
     override fun visit(node: AndNode): Op<Boolean> {
         TODO("Not yet implemented")
@@ -28,14 +28,19 @@ class ExposedRSQLVisitor(
 
     @Suppress("UNCHECKED_CAST")
     override fun visit(node: ComparisonNode): Op<Boolean> {
-        val operator = node.operator
-        val property = searchSpecification.properties.first { it.name == node.selector }
-        val column = property.column as Column<Any>
         val arguments =
-            node.arguments.map { parseDate(it) ?: parseLong(it) ?: parseDouble(it) ?: parseBoolean(it) ?: it }
+            node.arguments.map {
+                it.toLongOrNull()
+                    ?: it.toBooleanStrictOrNull()
+                    ?: it.toDateOrNull()
+                    ?: it.toDoubleOrNull()
+                    ?: it
+            }
         val argument = arguments.first()
 
-        return when (operator) {
+        val property = searchSpecification.properties.first { it.name == node.selector }
+        val column = property.column as Column<Any>
+        return when (val operator = node.operator) {
             RSQLOperators.EQUAL -> column eq argument
             RSQLOperators.NOT_EQUAL -> column neq argument
             RSQLOperators.GREATER_THAN -> column greater argument as Comparable<Any>
@@ -48,16 +53,10 @@ class ExposedRSQLVisitor(
             else -> throw Exception("Filter operator '$operator' not supported")
         }
     }
+}
 
-    private fun parseDate(string: String): Instant? =try {
-        Instant.parse(string)
-    } catch (e: DateTimeParseException) {
-        null
-    }
-
-    private fun parseLong(string: String): Long? = string.toLongOrNull()
-
-    private fun parseDouble(string: String): Double? = string.toDoubleOrNull()
-
-    private fun parseBoolean(string: String): Boolean? = string.toBooleanStrictOrNull()
+private fun String.toDateOrNull(): Instant? = try {
+    Instant.parse(this)
+} catch (e: DateTimeParseException) {
+    null
 }

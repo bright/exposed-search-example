@@ -6,7 +6,6 @@ import brightinventions.pl.exposed.SearchPropertySpecification
 import brightinventions.pl.exposed.SearchSpecification
 import brightinventions.pl.exposed.search
 import brightinventions.pl.persistance.table.PersonTable
-import cz.jirutka.rsql.parser.ast.RSQLOperators
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
@@ -22,8 +21,8 @@ class PersonDaoImpl : PersonDao {
         PersonTable
             .selectAll()
             .search(query, SearchSpecification(listOf(
-                SearchPropertySpecification(listOf(RSQLOperators.EQUAL), "name", PersonTable.name),
-                SearchPropertySpecification(listOf(RSQLOperators.EQUAL), "age", PersonTable.age)
+                SearchPropertySpecification("name", PersonTable.name),
+                SearchPropertySpecification("age", PersonTable.age)
             ))).map(::mapToFoundPerson)
     }
 
