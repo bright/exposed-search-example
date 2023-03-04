@@ -1,0 +1,1 @@
+rootProject.name = "brightinventions.pl.exposed-search-example"
