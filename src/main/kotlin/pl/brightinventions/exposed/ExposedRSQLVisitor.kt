@@ -1,4 +1,4 @@
-package brightinventions.pl.exposed
+package pl.brightinventions.exposed
 
 import cz.jirutka.rsql.parser.ast.*
 import org.jetbrains.exposed.sql.Column

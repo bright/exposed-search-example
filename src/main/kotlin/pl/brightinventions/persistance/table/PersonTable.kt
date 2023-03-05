@@ -1,4 +1,4 @@
-package brightinventions.pl.persistance.table
+package pl.brightinventions.persistance.table
 
 import org.jetbrains.exposed.sql.Table
 

@@ -1,6 +1,6 @@
-package brightinventions.pl.dto
+package pl.brightinventions.dto
 
-import brightinventions.pl.ktor.CustomUUIDSerializer
+import pl.brightinventions.ktor.CustomUUIDSerializer
 import kotlinx.serialization.Serializable
 import java.util.UUID
 

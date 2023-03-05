@@ -1,4 +1,4 @@
-package brightinventions.pl.dto
+package pl.brightinventions.dto
 
 data class CreatePersonDto(
     val name: String,

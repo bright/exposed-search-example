@@ -1,9 +1,9 @@
-package brightinventions.pl.plugins
+package pl.brightinventions.plugins
 
-import brightinventions.pl.dto.CreatePersonDto
-import brightinventions.pl.exposed.Database
-import brightinventions.pl.persistance.PersonDaoImpl
-import brightinventions.pl.persistance.table.PersonTable
+import pl.brightinventions.dto.CreatePersonDto
+import pl.brightinventions.exposed.Database
+import pl.brightinventions.persistance.PersonDaoImpl
+import pl.brightinventions.persistance.table.PersonTable
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction

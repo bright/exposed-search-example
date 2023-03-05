@@ -1,7 +1,7 @@
-package brightinventions.pl.persistance
+package pl.brightinventions.persistance
 
-import brightinventions.pl.dto.CreatePersonDto
-import brightinventions.pl.dto.FoundPersonDto
+import pl.brightinventions.dto.CreatePersonDto
+import pl.brightinventions.dto.FoundPersonDto
 
 interface PersonDao {
 

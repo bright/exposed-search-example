@@ -1,4 +1,4 @@
-package brightinventions.pl.exposed
+package pl.brightinventions.exposed
 
 import org.jetbrains.exposed.sql.Database
 

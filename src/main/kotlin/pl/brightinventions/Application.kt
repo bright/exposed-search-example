@@ -1,7 +1,7 @@
-package brightinventions.pl
+package pl.brightinventions
 
-import brightinventions.pl.plugins.configureData
-import brightinventions.pl.plugins.configureRouting
+import pl.brightinventions.plugins.configureData
+import pl.brightinventions.plugins.configureRouting
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*

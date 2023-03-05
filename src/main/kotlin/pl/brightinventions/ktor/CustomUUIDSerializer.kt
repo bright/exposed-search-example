@@ -1,4 +1,4 @@
-package brightinventions.pl.ktor
+package pl.brightinventions.ktor
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind

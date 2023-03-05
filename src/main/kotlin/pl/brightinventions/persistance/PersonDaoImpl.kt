@@ -1,11 +1,11 @@
-package brightinventions.pl.persistance
+package pl.brightinventions.persistance
 
-import brightinventions.pl.dto.CreatePersonDto
-import brightinventions.pl.dto.FoundPersonDto
-import brightinventions.pl.exposed.SearchPropertySpecification
-import brightinventions.pl.exposed.SearchSpecification
-import brightinventions.pl.exposed.search
-import brightinventions.pl.persistance.table.PersonTable
+import pl.brightinventions.dto.CreatePersonDto
+import pl.brightinventions.dto.FoundPersonDto
+import pl.brightinventions.exposed.SearchPropertySpecification
+import pl.brightinventions.exposed.SearchSpecification
+import pl.brightinventions.exposed.search
+import pl.brightinventions.persistance.table.PersonTable
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
@@ -23,7 +23,8 @@ class PersonDaoImpl : PersonDao {
             .search(query, SearchSpecification(listOf(
                 SearchPropertySpecification("name", PersonTable.name),
                 SearchPropertySpecification("age", PersonTable.age)
-            ))).map(::mapToFoundPerson)
+            ))
+            ).map(::mapToFoundPerson)
     }
 
     private fun mapToFoundPerson(it: ResultRow) = FoundPersonDto(
