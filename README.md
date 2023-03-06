@@ -2,7 +2,7 @@ Exposed RSQL/FIQL example
 ===
 
 Using jirutka's RSQL Parser, we can implement `search` functionality into the Jetbrains Exposed ORM. Take a look around
-the repository and visit the [blogpost about it](https://brightinventions.pl/blog/)
+the repository and visit the [blogpost about it](https://brightinventions.pl/blog/exposed-rsql-search-implementation)
 
 License
 ---
